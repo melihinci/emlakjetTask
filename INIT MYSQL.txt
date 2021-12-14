@@ -1,0 +1,42 @@
+CREATE DATABASE `emlakjetdb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+-- emlakjetdb.invoices definition
+
+CREATE TABLE `invoices` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `inserted_date` datetime NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `invoice_Id` varchar(100) NOT NULL,
+  `amount` decimal(10,0) NOT NULL DEFAULT '0',
+  `isApproved` bit(1) NOT NULL DEFAULT b'0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO emlakjetdb.invoices (user_id,inserted_date,description,invoice_Id,amount,isApproved) VALUES
+	 (1,'2021-12-14 12:58:39','kahve','TR000096',1,1),
+	 (1,'2021-12-14 12:58:39','krema','TR000097',3,0),
+	 (1,'2021-12-14 13:01:33','þeker','TR000098',5,1),
+	 (0,'2021-12-14 22:18:04','zeytin','TR000100',45,1),
+	 (6,'2021-12-14 23:39:46','üzüm','TR000101',45,1),
+	 (6,'2021-12-14 23:42:15','muz','TR000103',212,0);
+	 
+	
+-- emlakjetdb.users definition
+
+CREATE TABLE `users` (
+  `name` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_name_IDX` (`name`,`surname`,`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO emlakjetdb.users (name,surname,email) VALUES
+	 ('manuel','manuel','test@test'),
+	 ('manuel','manuelA','test@test'),
+	 ('manuel','manuelB','test@test'),
+	 ('manuel','manuelc','test@test'),
+	 ('manuel','manuelD','test@test'),
+	 ('postman','postman1','postman@post');
